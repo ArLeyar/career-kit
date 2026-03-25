@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1584px;
+    height: 396px;
+    overflow: hidden;
+    background: #2c2524;
+    font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+    position: relative;
+  }
+
+  /* subtle noise */
+  body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* faint grid */
+  .grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(209,154,102,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(209,154,102,0.04) 1px, transparent 1px);
+    background-size: 66px 66px;
+    z-index: 0;
+  }
+
+  /* left accent bar */
+  .accent-bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent 10%, #d19a66 20%, #e06c75 50%, #d19a66 80%, transparent 90%);
+    z-index: 2;
+  }
+
+  /* main content — offset right for profile photo */
+  .content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 60px 0 320px;
+  }
+
+  /* tagline above keywords */
+  .tagline {
+    font-size: 15px;
+    font-weight: normal;
+    color: #a89888;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  /* main keywords — single line */
+  .keywords {
+    display: flex;
+    align-items: baseline;
+    white-space: nowrap;
+  }
+
+  .keyword {
+    font-size: 42px;
+    font-weight: bold;
+    color: #d19a66;
+    letter-spacing: 1px;
+  }
+
+  .dot {
+    font-size: 32px;
+    color: #e06c75;
+    margin: 0 24px;
+    font-weight: normal;
+  }
+
+  /* underline */
+  .underline {
+    margin-top: 16px;
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #e06c75, transparent);
+  }
+
+  /* bottom right email */
+  .email {
+    position: absolute;
+    bottom: 20px;
+    right: 40px;
+    font-size: 13px;
+    color: #7a7068;
+    letter-spacing: 0.5px;
+    z-index: 2;
+  }
+
+  /* bottom left cursor */
+  .cursor {
+    position: absolute;
+    bottom: 20px;
+    left: 40px;
+    font-size: 13px;
+    color: #d19a66;
+    z-index: 2;
+    opacity: 0.5;
+  }
+  .cursor span { animation: blink 1.2s step-end infinite; }
+  @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+</style>
+</head>
+<body>
+  <div class="grid"></div>
+  <div class="accent-bar"></div>
+
+  <div class="content">
+    <div class="tagline">building with ai agents</div>
+    <div class="keywords">
+      <span class="keyword">Go</span>
+      <span class="dot">&middot;</span>
+      <span class="keyword">Rust</span>
+      <span class="dot">&middot;</span>
+      <span class="keyword">AI Agents</span>
+      <span class="dot">&middot;</span>
+      <span class="keyword">Distributed Systems</span>
+    </div>
+    <div class="underline"></div>
+  </div>
+
+  <div class="cursor">~ <span>_</span></div>
+  <div class="email">your.email@example.com</div>
+</body>
+</html>
